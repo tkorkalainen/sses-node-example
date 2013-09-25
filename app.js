@@ -8,7 +8,7 @@ var express = require('express'),
     redis   = require('redis'),
     publisherClient = redis.createClient();
 
-var app = module.exports = express.createServer();
+var app = module.exports = express();
 
 // Configuration
 
@@ -82,5 +82,5 @@ app.get('/fire-event/:event_name', function(req, res) {
   res.end();
 });
 
-app.listen(8000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+var server = app.listen(8000);
+console.log("Express server listening on port %d in %s mode", server.address().port, app.settings.env);
